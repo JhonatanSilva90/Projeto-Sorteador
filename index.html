@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Sorteador</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sorteador</h1>
+      <div>
+        <input id="participante" placeholder="Nome" type="text" />
+        <button onclick="handleAdicionarParticipante()">Adicionar Participante</button>
+      </div>
+    </header>
+    <hr />
+    <main>
+      <p id="participante-sorteado"></p>
+      <h2>Participantes</h2>
+      <ul id="participantes"></ul>
+      <button onclick="handleSortear()">Sortear</button>
+    </main>
+    <script>
+      // "Criação de um array para banco de dados"
+      let participantes = []
+
+      // Elementos Da Tela
+      // Funções de Entrada (Capturar valores do Input)
+      const inputParticipante = document.getElementById('participante')
+      function obterParticipante() {
+        return inputParticipante.value.trim()
+      }
+      
+      // Funções de Saída (Colocar valores dentro das tags HTML)
+      const ulParticipantes = document.getElementById('participantes')
+      function mostrarParticipantes(participantes) {
+        ulParticipantes.innerHTML = ''
+        
+        for (let participante of participantes) {
+          ulParticipantes.innerHTML += `<li> ${participante} </li>`
+        }
+      }
+      
+      const pSorteio = document.getElementById('participante-sorteado')
+      function mostrarSorteado(participanteSorteado) {
+        pSorteio.innerText = `Sorteado: ${participanteSorteado}`
+      }
+
+      // Funções de Handle (Funções para lidar com os eventos DOM). As funções de entrada e saida.
+      function handleAdicionarParticipante() {
+        let participante = obterParticipante()
+        participantes.push(participante)
+        mostrarParticipantes(participantes)
+      }
+
+      function handleSortear() {
+        let posicaoSorteada = Math.floor(Math.random() * participantes.length)
+        let participanteSorteado = participantes[posicaoSorteada]
+        mostrarSorteado(participanteSorteado)
+      }
+    </script>
+  </body>
+</html>
