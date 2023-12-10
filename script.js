@@ -21,6 +21,9 @@ function mostrarParticipantes(participantes) {
 
     ulParticipantes.appendChild(liParticipante)
   }
+    // Para limpar o valor da caixa após ele ser adicionado.
+  inputParticipante.value = ''
+  inputParticipante.focus()
 }
 
 let pSorteio = document.getElementById('participante-sorteado')
@@ -35,6 +38,9 @@ function handleAdicionarParticipante() {
   participantes.push(participante)
   mostrarParticipantes(participantes)
 }
+
+
+
 
 function handleSortear() {
   let posicaoSorteada = Math.floor(Math.random() * participantes.length)
