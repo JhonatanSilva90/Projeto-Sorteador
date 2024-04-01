@@ -1,3 +1,46 @@
+// Criando elementos HTML dinamicamente:
+// Criando o header
+const header = document.createElement("header");
+const h1 = document.createElement("h1");
+h1.textContent = "Sorteador";
+const div = document.createElement("div");
+const input = document.createElement("input");
+input.id = "participante";
+input.placeholder = "Nome";
+input.type = "text";
+const buttonAdicionar = document.createElement("button");
+buttonAdicionar.textContent = "Adicionar Participante";
+buttonAdicionar.onclick = handleAdicionarParticipante;
+
+div.appendChild(input);
+div.appendChild(buttonAdicionar);
+header.appendChild(h1);
+header.appendChild(div);
+
+const hr = document.createElement("hr");
+
+// Criando o main
+const main = document.createElement("main");
+const pParticipanteSorteado = document.createElement("p");
+pParticipanteSorteado.id = "participante-sorteado";
+const h2 = document.createElement("h2");
+h2.textContent = "Participantes";
+const ul = document.createElement("ul");
+ul.id = "participantes";
+const buttonSortear = document.createElement("button");
+buttonSortear.textContent = "Sortear";
+buttonSortear.onclick = handleSortear;
+
+main.appendChild(pParticipanteSorteado);
+main.appendChild(h2);
+main.appendChild(ul);
+main.appendChild(buttonSortear);
+
+// Adicionando elementos criados ao body
+document.body.appendChild(header);
+document.body.appendChild(hr);
+document.body.appendChild(main);
+
 // "Banco de dados"
 let participantes = []
 
